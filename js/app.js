@@ -130,21 +130,16 @@ function goToMessage(){
     showPage('page-message');
     var msgs=document.querySelectorAll('#page-message .message');
     msgs.forEach(function(m,i){
-      m.classList.remove('show');
       m.style.opacity='0';
-      m.style.transform='translateY(28px)';
+      m.style.transform='translateY(30px)';
       m.style.transition='none';
+      void m.offsetWidth;
+      setTimeout(function(){
+        m.style.transition='opacity 0.7s ease, transform 0.7s ease';
+        m.style.opacity='1';
+        m.style.transform='translateY(0)';
+      }, 200 + i*400);
     });
-    setTimeout(function(){
-      msgs.forEach(function(m,i){
-        setTimeout(function(){
-          m.style.transition='opacity 0.8s ease, transform 0.8s ease';
-          m.style.opacity='1';
-          m.style.transform='translateY(0)';
-          m.classList.add('show');
-        }, i*500);
-      });
-    }, 100);
   } catch(e){ console.error('goToMessage error:', e); }
 }
 
