@@ -572,6 +572,7 @@ body::after {
 .mine-info {
   display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:4px;
 }
+.mine-desc { font-family:var(--font-body); font-size:0.95em; color:var(--pink-main); margin:4px 0 10px; opacity:0.85; }
 .mine-lives { font-size:1.1em;letter-spacing:2px; }
 .mine-found { font-family:var(--font-ui);font-size:0.85em;color:var(--pink-main);font-weight:600; }
 .mine-reset-btn {
