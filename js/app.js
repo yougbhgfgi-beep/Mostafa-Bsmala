@@ -125,19 +125,6 @@ function goToJourney(){
   startFloats();
 }
 
-function goToMessage(){
-  showPage('page-message');
-  var msgs=document.querySelectorAll('#page-message .message');
-  msgs.forEach(function(m,i){
-    m.style.opacity='0';
-    m.style.transform='translateY(30px)';
-    void m.offsetWidth;
-    m.style.transition='opacity 0.7s ease '+i*0.35+'s, transform 0.7s ease '+i*0.35+'s';
-    m.style.opacity='1';
-    m.style.transform='translateY(0)';
-  });
-}
-
 function backToMemories(){
   showPage('page-journey');
 }
@@ -397,8 +384,6 @@ try { initMineGame(); } catch(e){ console.error('Mine game init error:', e); }
 
 /* ==================== EVENT LISTENERS ==================== */
 document.getElementById('next-btn').addEventListener('click', goToJourney);
-document.getElementById('toPage3Btn').addEventListener('click', goToMessage);
-document.getElementById('backBtn').addEventListener('click', backToMemories);
 
 document.addEventListener('click',function(e){
   var card=e.target.closest('.photo-card');
