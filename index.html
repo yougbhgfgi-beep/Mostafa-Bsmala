@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Mostafa & Basmala 💖</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&family=Cairo:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Caveat:wght@400;500;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;1,9..40,300&family=Sacramento&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23800020'/><text x='50' y='55' font-size='60' text-anchor='middle' dominant-baseline='middle'>❤️</text></svg>">
+</head>
+<body>
+
+  <!-- LOGIN SCREEN -->
+  <div id="login-screen">
+    <div class="login-hearts" id="loginHearts"></div>
+    <div style="text-align:center;position:relative;z-index:1;">
+      <div class="envelope-scene">
+        <div class="envelope-hearts">
+          <span class="env-heart">💖</span>
+          <span class="env-heart">💗</span>
+          <span class="env-heart">💕</span>
+          <span class="env-heart">✨</span>
+          <span class="env-heart">💖</span>
+        </div>
+        <div class="envelope-sparkle">
+          <div class="sparkle"></div>
+          <div class="sparkle"></div>
+          <div class="sparkle"></div>
+          <div class="sparkle"></div>
+        </div>
+        <div class="envelope-wrapper" id="envelope-wrapper">
+          <div class="env-tape"><span class="env-tape-text">♥ love letter ♥</span></div>
+          <div class="envelope-body">
+            <div class="env-texture"></div>
+            <div class="env-flap" id="env-flap"></div>
+            <div class="env-seal" id="env-seal">
+              <svg viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <clipPath id="sealPhotoClip"><circle cx="36" cy="36" r="25"></circle></clipPath>
+                </defs>
+                <circle cx="36" cy="36" r="34" fill="#c08090" opacity="0.2"/>
+                <circle cx="36" cy="36" r="29" fill="#a06078"/>
+                <circle cx="36" cy="36" r="27" fill="#d08898"/>
+                <circle cx="36" cy="36" r="25" fill="#c07888" opacity="0.5"/>
+                <image href="images/photo-05.jpg" x="11" y="11" width="50" height="50" clip-path="url(#sealPhotoClip)" preserveAspectRatio="xMidYMid slice"/>
+                <circle cx="36" cy="36" r="25" fill="#b06078" opacity="0.15"/>
+                <ellipse cx="29" cy="27" rx="8" ry="5" fill="white" opacity="0.1" transform="rotate(-35 29 27)"/>
+                <circle cx="36" cy="36" r="21" fill="none" stroke="white" stroke-width="0.9" opacity="0.2"/>
+                <circle cx="36" cy="36" r="18" fill="none" stroke="white" stroke-width="0.4" opacity="0.12"/>
+              </svg>
+            </div>
+            <div class="env-folds">
+              <div class="env-fold-left"></div>
+              <div class="env-fold-right"></div>
+            </div>
+            <div class="env-bottom-fold"></div>
+            <div class="env-letter-peek">
+              <div class="env-letter-lines"><span></span><span></span><span></span></div>
+              <div class="env-letter-heart">♥</div>
+            </div>
+            <div class="env-recipient">
+              <span class="env-to-label">love</span>
+              <span class="env-to-name">حبيبي Mostafa ❤</span>
+            </div>
+            <div class="env-stamp">
+              <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+                <path d="M11 3 L13 8 L18 8 L14 11.5 L15.5 17 L11 13.5 L6.5 17 L8 11.5 L4 8 L9 8 Z" fill="#b06078"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h2 class="login-title">رساله من القلب</h2>
+      <p class="login-subtitle">ادخل كلمة السر عشان تفتح الهديه</p>
+      <div class="login-input-wrap">
+        <span class="login-input-icon">🔒</span>
+        <input type="text" id="loginPassword" class="login-input" placeholder="كلمة السر...">
+      </div>
+      <button onclick="checkLogin()" class="login-btn">💌 افتح الرساله 💌</button>
+      <p id="loginError" class="login-error">كلمة السر غلط، جرّب تاني ❤️</p>
+      <div class="login-dots">
+        <div class="login-dot"></div>
+        <div class="login-dot"></div>
+        <div class="login-dot"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FLOATING HEARTS -->
+  <div class="floats-container" id="floatsContainer"></div>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox(event)"><img src="" alt=""></div>
+
+  <!-- PAGE 1 — LETTER -->
+  <div class="page" id="page-letter">
+    <div class="paper-bg" aria-hidden="true"></div>
+    <div class="letter-scroll">
+      <article class="letter-paper" id="letter-paper" role="main">
+        <div class="letter-tape"><span class="letter-tape-text">♥ from my heart ♥</span></div>
+        <div class="letter-paper-inner">
+          <header class="letter-header">
+            <div class="ornament-top" aria-hidden="true">
+              <svg width="100%" height="100%" viewBox="0 0 200 24" fill="none">
+                <line x1="0" y1="12" x2="80" y2="12" stroke="var(--gold)" stroke-width="0.8" stroke-dasharray="4 5" opacity="0.6"/>
+                <path d="M95 6 L100 2 L105 6 L100 10 Z" fill="var(--gold)" opacity="0.8"/>
+                <circle cx="100" cy="14" r="2" fill="none" stroke="var(--accent)" stroke-width="0.8" opacity="0.5"/>
+                <line x1="120" y1="12" x2="200" y2="12" stroke="var(--gold)" stroke-width="0.8" stroke-dasharray="4 5" opacity="0.6"/>
+              </svg>
+            </div>
+            <h1 class="letter-title" id="letter-title"></h1>
+            <time class="letter-date" id="letter-date"></time>
+          </header>
+          <div class="letter-salutation">
+            <span class="letter-to" id="letter-to"></span>
+          </div>
+          <div class="letter-body" id="letter-body" aria-label="Letter content"></div>
+          <footer class="letter-footer">
+            <div class="letter-closing-wrap">
+              <span class="letter-from" id="letter-from"></span>
+            </div>
+            <div class="footer-divider" aria-hidden="true">
+              <svg width="100%" height="100%" viewBox="0 0 200 16" fill="none">
+                <line x1="0" y1="8" x2="65" y2="8" stroke="var(--gold)" stroke-width="0.6" stroke-dasharray="3 5" opacity="0.5"/>
+                <circle cx="85" cy="8" r="1.5" fill="var(--accent)" opacity="0.4"/>
+                <circle cx="100" cy="8" r="2.5" fill="none" stroke="var(--gold)" stroke-width="1" opacity="0.6"/>
+                <circle cx="115" cy="8" r="1.5" fill="var(--accent)" opacity="0.4"/>
+                <line x1="135" y1="8" x2="200" y2="8" stroke="var(--gold)" stroke-width="0.6" stroke-dasharray="3 5" opacity="0.5"/>
+              </svg>
+            </div>
+            <button id="next-btn" class="next-button" aria-label="Continue to next journey">
+              <span class="next-text">our memories</span>
+              <span class="next-arrow" aria-hidden="true">💕 →</span>
+            </button>
+          </footer>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <!-- PAGE 2 — JOURNEY -->
+  <div class="page" id="page-journey">
+    <div class="hero-section">
+      <img src="images/hero.jpg" alt="صورتنا" fetchpriority="high" decoding="async">
+      <div class="hero-overlay"></div>
+      <div class="hero-badge">بحبك 💕</div>
+      <div class="scroll-hint" id="scrollHint">⌄</div>
+    </div>
+    <div class="content-wrap" id="mainContent">
+      <h1 class="page-title">بدايتنا Mostafa & Basmala 💞</h1>
+      <div class="photos-stack">
+        <div class="countdown-wrapper">
+          <div class="countdown-card">
+            <p class="countdown-title">💖 أول مرة قولتلي بحبك 💖</p>
+            <p class="countdown-date-text">4 / 6 / 2026</p>
+            <div class="countdown-grid">
+              <div class="countdown-box"><span class="countdown-number" id="days">0</span><span class="countdown-label">يوم</span></div>
+              <div class="countdown-box"><span class="countdown-number" id="hours">00</span><span class="countdown-label">ساعة</span></div>
+              <div class="countdown-box"><span class="countdown-number" id="minutes">00</span><span class="countdown-label">دقيقة</span></div>
+              <div class="countdown-box"><span class="countdown-number" id="seconds">00</span><span class="countdown-label">ثانية</span></div>
+            </div>
+            <p class="countdown-sub">من يومها وانت في قلبي ❤️</p>
+          </div>
+        </div>
+
+        <!-- Divider -->
+        <div class="section-divider"><div class="divider-line"></div><div class="divider-icon">💫</div><div class="divider-line"></div></div>
+
+        <!-- Caption -->
+        <div class="caption-card-standalone">
+          <div class="caption-box-new"><p class="caption-text-new">ذكرياتنا الحلوة</p></div>
+        </div>
+
+        <!-- Photo 1 -->
+        <div class="photo-card"><div class="photo-inner">
+          <img src="images/photo-01.jpg" alt="ذكرى 1" loading="lazy" decoding="async">
+          <div class="ripple-container"></div>
+        </div><div class="caption-simple">اليوم دا طبعا الي جيت اتقدمتلي فيه ❤️🫂</div></div>
+
+        <!-- Chain Connector 1 -->
+        <div class="love-chain"><div class="chain-dot"></div><div class="chain-dot"></div><div class="chain-heart"></div><div class="chain-dot"></div><div class="chain-dot"></div></div>
+
+        <!-- Photo 2 -->
+        <div class="photo-card"><div class="photo-inner">
+          <img src="images/photo-02.jpg" alt="ذكرى 2" loading="lazy" decoding="async">
+          <div class="ripple-container"></div>
+        </div><div class="caption-simple">بس ي Mostafa أنا الي طول ما انت معايا أنا الي قد الدنيا ❤️</div></div>
+
+        <!-- Chain Connector 2 -->
+        <div class="love-chain"><div class="chain-dot"></div><div class="chain-dot"></div><div class="chain-heart"></div><div class="chain-dot"></div><div class="chain-dot"></div></div>
+
+        <!-- Photo 3 -->
+        <div class="photo-card"><div class="photo-inner">
+          <img src="images/photo-03.jpg" alt="ذكرى 3" loading="lazy" decoding="async">
+          <div class="ripple-container"></div>
+        </div><div class="caption-simple">❤️🫂</div></div>
+
+        <!-- Chain Connector 3 -->
+        <div class="love-chain"><div class="chain-dot"></div><div class="chain-dot"></div><div class="chain-heart"></div><div class="chain-dot"></div><div class="chain-dot"></div></div>
+
+        <!-- Photo 4 -->
+        <div class="photo-card"><div class="photo-inner">
+          <img src="images/photo-04.jpg" alt="ذكرى 4" loading="lazy" decoding="async">
+          <div class="ripple-container"></div>
+        </div><div class="caption-simple">❤️🫂</div></div>
+
+        <!-- Divider -->
+        <div class="section-divider"><div class="divider-line"></div><div class="divider-icon">🎥</div><div class="divider-line"></div></div>
+
+        <!-- Videos Section -->
+        <div class="videos-section">
+          <div class="videos-grid">
+            <div class="video-card">
+              <div class="photo-card"><div class="photo-inner">
+                <video src="images/video-01.mp4" controls playsinline preload="metadata" class="video-player"></video>
+              </div><div class="caption-simple">❤️🌏</div></div>
+            </div>
+            <div class="video-card">
+              <div class="photo-card"><div class="photo-inner">
+                <video src="images/video-02.mp4" controls playsinline preload="metadata" class="video-player"></video>
+              </div><div class="caption-simple">كنت اول مره افرح فيها من قلبي علشان انت كنت خلاص جيت لينا البيت واقولتلهم كلهم انك بتحبني ❤️</div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Divider -->
+        <div class="section-divider"><div class="divider-line"></div><div class="divider-icon">🎮</div><div class="divider-line"></div></div>
+
+        <!-- Game Section -->
+        <div class="quiz-section" id="quizSection">
+          <div class="quiz-card" id="quizCard">
+            <h2 class="quiz-title">🤍 لعبة المتناها 🤍</h2>
+            <p class="quiz-subtitle">العب واربح قلبك 💘</p>
+            <div class="mine-grid" id="mineGrid"></div>
+            <div class="mine-info">
+              <span class="mine-lives" id="mineLives">❤️❤️❤️</span>
+              <button class="mine-reset-btn" id="mineResetBtn" onclick="resetMineGame()">🔄</button>
+              <span class="mine-found" id="mineFound">💎 0</span>
+            </div>
+            <div class="quiz-result hidden" id="quizResult">
+              <p class="quiz-emoji" id="quizEmoji">🎉</p>
+              <p class="quiz-win-text" id="quizWinText"></p>
+              <p class="quiz-msg" id="quizMsg"></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Divider -->
+        <div class="section-divider"><div class="divider-line"></div><div class="divider-icon">💘</div><div class="divider-line"></div></div>
+
+        <!-- Second Countdown - Meeting Date -->
+        <div class="countdown-wrapper">
+          <div class="countdown-card">
+            <p class="countdown-title">💖 أول مرة اتقابالنا 💖</p>
+            <p class="countdown-date-text">27 / 5 / 2026</p>
+            <div class="countdown-grid">
+              <div class="countdown-box"><span class="countdown-number" id="days2">0</span><span class="countdown-label">يوم</span></div>
+              <div class="countdown-box"><span class="countdown-number" id="hours2">00</span><span class="countdown-label">ساعة</span></div>
+              <div class="countdown-box"><span class="countdown-number" id="minutes2">00</span><span class="countdown-label">دقيقة</span></div>
+              <div class="countdown-box"><span class="countdown-number" id="seconds2">00</span><span class="countdown-label">ثانية</span></div>
+            </div>
+            <p class="countdown-sub">من يومها وحياتي اختلفت ❤️</p>
+          </div>
+        </div>
+
+        <div class="final-cta">
+          <p class="cta-text"><span class="rainbow-love">💖 بحبك للأبد 💖</span></p>
+          <button class="next-btn" id="toPage3Btn">💌 الخاتمة 💌</button>
+        </div>
+    </div>
+  </div>
+
+  <!-- PAGE 3 — MESSAGES (الخاتمة) -->
+  <div class="page" id="page-message">
+    <div class="msg-wrap">
+      <h1 class="msg-title">💖 الخاتمة 💖</h1>
+      <div class="messages-container">
+        <div class="message">4/6/2026 ❤️</div>
+        <div class="message">أنا بحبك أكتر من أي كلام ممكن يتقال</div>
+        <div class="message">قلبي معاك في كل لحظة يا Mostafa</div>
+        <div class="message">أنت نور عيوني و حياتي</div>
+        <div class="message">يارب أكون صاحبك وحبيبي وسندك للأبد</div>
+        <div class="message">بحبك لحد ما يوقف قلبي وبعدها كمان ❤️</div>
+      </div>
+      <button class="next-btn" id="backBtn">🔄 ذكرياتنا</button>
+      <div class="msg-footer">💓 بحبك ي Mostafa 💓</div>
+    </div>
+  </div>
+
+  <!-- MUSIC PLAYER -->
+  <div class="music-player">
+    <div class="player-inner">
+      <div class="disc" id="disc">
+        <img src="images/photo-01.jpg" alt="" id="discImg" loading="lazy" decoding="async">
+      </div>
+      <div class="player-controls">
+        <button class="ctrl-btn" onclick="prevSong()"><i class="fa-solid fa-backward-step"></i></button>
+        <button class="play-btn" id="playBtn" onclick="toggleMusic()"><i class="fa-solid fa-play" id="playIcon"></i></button>
+        <button class="ctrl-btn" onclick="nextSong()"><i class="fa-solid fa-forward-step"></i></button>
+      </div>
+      <div class="player-info">
+        <div class="player-top">
+          <span class="song-name" id="songName">Bataminak</span>
+          <div style="display:flex;align-items:center;gap:5px;flex-shrink:0;">
+            <span class="song-num" id="songNum">1 / 1</span>
+            <div class="sound-wave" id="soundWave">
+              <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+            </div>
+          </div>
+        </div>
+        <div class="progress-bar" id="progressBar" onclick="seekMusic(event)">
+          <div class="progress-fill" id="progressFill" style="width: 0%;"></div>
+        </div>
+        <div class="time-row">
+          <span id="currentTime">0:00</span>
+          <span id="totalTime">0:00</span>
+        </div>
+      </div>
+    </div>
+    <audio id="loveSong" preload="auto" playsinline src="audio/01.Bataminak.mp3"></audio>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
