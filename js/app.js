@@ -126,21 +126,16 @@ function goToJourney(){
 }
 
 function goToMessage(){
-  try {
-    showPage('page-message');
-    var msgs=document.querySelectorAll('#page-message .message');
-    msgs.forEach(function(m,i){
-      m.style.opacity='0';
-      m.style.transform='translateY(30px)';
-      m.style.transition='none';
-      void m.offsetWidth;
-      setTimeout(function(){
-        m.style.transition='opacity 0.7s ease, transform 0.7s ease';
-        m.style.opacity='1';
-        m.style.transform='translateY(0)';
-      }, 200 + i*400);
-    });
-  } catch(e){ console.error('goToMessage error:', e); }
+  showPage('page-message');
+  var msgs=document.querySelectorAll('#page-message .message');
+  msgs.forEach(function(m,i){
+    m.style.opacity='0';
+    m.style.transform='translateY(30px)';
+    void m.offsetWidth;
+    m.style.transition='opacity 0.7s ease '+i*0.35+'s, transform 0.7s ease '+i*0.35+'s';
+    m.style.opacity='1';
+    m.style.transform='translateY(0)';
+  });
 }
 
 function backToMemories(){

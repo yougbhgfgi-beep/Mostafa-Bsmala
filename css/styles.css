@@ -914,12 +914,13 @@ body::after {
 #page-message {
   background: linear-gradient(135deg,#f8c4d4 0%,#d098a8 25%,#e0a0b0 50%,#e8a0b8 75%,#f8c4d4 100%);
   background-size:400% 400%; animation:gradientShift 20s ease infinite;
+  min-height:100vh; min-height:100dvh;
 }
-.msg-wrap { position:relative;z-index:1;width:100%;margin:0 auto;padding:30px 16px 20px;display:flex;flex-direction:column;align-items:center; }
+.msg-wrap { position:relative;z-index:1;width:100%;max-width:600px;margin:0 auto;padding:30px 16px 20px;display:flex;flex-direction:column;align-items:center; }
 .msg-title { font-family:var(--font-display);font-style:italic;font-size:clamp(2em,6vw,3em);color:var(--pink-main);font-weight:600;margin-bottom:20px;animation:titleGlow 3s infinite alternate; }
 @keyframes titleGlow { 0%{text-shadow:0 0 20px rgba(200,80,120,0.3)} 100%{text-shadow:0 0 45px rgba(200,80,120,0.6)} }
-.messages-container { width:100%;background:var(--glass);backdrop-filter:blur(15px);border-radius:28px;padding:clamp(20px,4vw,36px) clamp(16px,4vw,30px);box-shadow:0 20px 60px rgba(200,80,120,0.12),0 0 35px rgba(220,160,180,0.15);border:2px solid var(--pink-border);margin-bottom:24px; }
-.message { font-family:var(--font-body);font-size:clamp(1.2em,3.5vw,1.55em);color:var(--pink-text);margin:14px 0;line-height:1.8;font-weight:500;cursor:pointer;padding:10px 14px;border-radius:18px;transition:all .4s ease; }
+.messages-container { width:100%;background:rgba(255,240,245,0.97);border-radius:28px;padding:clamp(20px,4vw,36px) clamp(16px,4vw,30px);box-shadow:0 20px 60px rgba(200,80,120,0.12),0 0 35px rgba(220,160,180,0.15);border:2px solid rgba(200,80,120,0.35);margin-bottom:24px; }
+.message { font-family:var(--font-body);font-size:clamp(1.2em,3.5vw,1.55em);color:#4a1530;margin:14px 0;line-height:1.8;font-weight:500;cursor:pointer;padding:10px 14px;border-radius:18px;transition:all .4s ease;opacity:1; }
 .message:hover { transform:scale(1.06) translateY(0);color:var(--pink-main);background:rgba(200,80,120,0.07);text-shadow:0 2px 15px rgba(200,80,120,0.3); }
 @keyframes msgFadeIn { to{opacity:1;transform:translateY(0)} }
 .msg-footer { font-family:var(--font-signature);margin-top:24px;font-size:clamp(1.6em,5vw,2.4em);color:var(--pink-main);font-weight:400;animation:titleGlow 3s infinite alternate;transition:all .3s ease;cursor:default; }
