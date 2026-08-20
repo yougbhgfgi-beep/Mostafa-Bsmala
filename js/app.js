@@ -394,17 +394,13 @@ document.addEventListener('click',function(e){
 var musicWasPlaying=false;
 document.querySelectorAll('video').forEach(function(v){
   v.addEventListener('play',function(){
-    musicWasPlaying=!audio.paused;
-    if(musicWasPlaying){audio.pause();setPlaying(false);}
+    if(!audio.paused){musicWasPlaying=true;audio.pause();setPlaying(false);}
   });
   v.addEventListener('pause',function(){
-    if(v.ended || v.currentTime<0.5) return;
-    setTimeout(function(){
-      if(v.paused && !v.ended && musicWasPlaying){
-        audio.play().then(function(){setPlaying(true);}).catch(function(){});
-        musicWasPlaying=false;
-      }
-    },300);
+    if(!v.ended && v.currentTime>1 && musicWasPlaying){
+      audio.play().then(function(){setPlaying(true);}).catch(function(){});
+      musicWasPlaying=false;
+    }
   });
   v.addEventListener('ended',function(){
     if(musicWasPlaying){
