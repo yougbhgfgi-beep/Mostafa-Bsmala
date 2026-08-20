@@ -417,10 +417,19 @@ document.querySelectorAll('video').forEach(function(v){
     if(musicWasPlaying){audio.pause();setPlaying(false);}
   });
   v.addEventListener('pause',function(){
-    if(musicWasPlaying){audio.play().then(function(){setPlaying(true);}).catch(function(){});}
+    if(v.ended || v.currentTime<0.5) return;
+    setTimeout(function(){
+      if(v.paused && !v.ended && musicWasPlaying){
+        audio.play().then(function(){setPlaying(true);}).catch(function(){});
+        musicWasPlaying=false;
+      }
+    },300);
   });
   v.addEventListener('ended',function(){
-    if(musicWasPlaying){audio.play().then(function(){setPlaying(true);}).catch(function(){});}
+    if(musicWasPlaying){
+      audio.play().then(function(){setPlaying(true);}).catch(function(){});
+      musicWasPlaying=false;
+    }
   });
 });
 
